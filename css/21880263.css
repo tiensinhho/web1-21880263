@@ -91,6 +91,9 @@ h1 {
     color: var(--web1-blue);
     margin-top: -4px;
 }
+.web1-text-blue {
+    color: var(--web1-blue);
+}
 
 /* about us */
 #aboutus {
