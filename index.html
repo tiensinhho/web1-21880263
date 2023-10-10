@@ -208,20 +208,20 @@
     </div>
   </script>
 
+  <script id="details-template" type="text/xhandlebars-template">
+    <section class=" container-fluid" id = "banner-small"></section>
+      {{#each data}}
+      <section class="container py-5">
+        <h1 class="pb-3">{{name}}</h1>
+        <div class="text-black-50">{{{description}}}</div>
+      </section>
+      {{/each}}
+  </script>
   <script>
     loadData('products','products-template','products')
   </script>
 
-  <script class="details-template" type="text/xhandlebars-template">
-    <section class=" container-fluid" id = "banner-small">
-      {{#each data}}
-      <section class="container py-5">
-        <h1>{{name}}</h1>
-        <div>{{{description}}}</div>
-      </section>
-      {{/each}}
-    </section>
-  </script>
+
   <!-- News template  -->
   <script id="news-template" type="text/xhandlebars-template">
     <h1 class="text-black-10">News</h1>
@@ -234,7 +234,7 @@
               {{date}}
             </h3>
           </div>
-          <a href="#" class="btn btn-link ps-0">Read more</a>
+          <a href="#" class="btn btn-link ps-0" onclick="loadData('news/{{id}}','details-template','content')">Read more</a>
         </div>
         <div>
           <h3>{{name}}</h3>
