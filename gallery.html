@@ -46,7 +46,7 @@
               <a class="nav-link" href="about.html">About</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link active" href="galary.html">Galary</a>
+              <a class="nav-link active" href="gallery.html">Gallery</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="blogs.html">Blogs</a>
@@ -73,26 +73,11 @@
 
   <main>
     <section class=" container py-5">
-        <h1>Galary</h1>
+        <h1>Gallery</h1>
         <strong>Filter by category</strong>
         <ul class="nav" id="gallery-categories">
         </ul>
         <div class="row py-2" id="gallery">
-            <div class="col-md-3">
-              <img src="images/gallery/gallery-thumb1.jpg" alt="image1" class="img-thumbnail mb-3">
-            </div>
-            <div class="col-md-3">
-              <img src="images/gallery/gallery-thumb1.jpg" alt="image1" class="img-thumbnail mb-3">
-            </div>
-            <div class="col-md-3">
-              <img src="images/gallery/gallery-thumb1.jpg" alt="image1" class="img-thumbnail mb-3">
-            </div>
-            <div class="col-md-3">
-              <img src="images/gallery/gallery-thumb1.jpg" alt="image1" class="img-thumbnail mb-3">
-            </div>
-            <div class="col-md-3">
-              <img src="images/gallery/gallery-thumb1.jpg" alt="image1" class="img-thumbnail mb-3">
-            </div>
         </div>
     </section>
   </main>
@@ -106,7 +91,7 @@
           <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link active" href="galary.html">Galary</a>
+          <a class="nav-link active" href="gallery.html">Gallery</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="blogs.html">Blog</a>
@@ -149,11 +134,6 @@
     </div>
   </div>
   
-  <!-- Optional: Place to the bottom of scripts -->
-  <script>
-    const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-  
-  </script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -164,29 +144,11 @@
   </script>
 
   <!-- HandlebarsJS  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.runtime.min.js" integrity="sha512-WUaZk9J3oknQdKPT2wAfA0gEBG2371l1ACjiynLA/X28p07n1u59VFk7q1i83/bo7N9rqVdYKlnvwAAiwL36jQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/gallery.templates.js"></script>
   <script src="js/21880263.js"></script>
    
-  <!-- gallery catergories template -->
-  <script id="gallery-categories-template" type="text/x-handlebars-template">
-    <li class="nav-item">
-      <a class="nav-link disabled ps-0" href="#" onclick="loadData('gallery', 'gallery-template', 'gallery'); disableLink(this)" aria-current="page">Show all</a>
-    </li>
-    {{#each data}}
-    <li class="nav-item">
-        <a class="nav-link" href="#" onclick="loadData('gallery/categories/{{id}}', 'gallery-template', 'gallery'); disableLink(this)">{{name}}</a>
-    </li>
-    {{/each}}
-  </script>
-
-  <!-- gallery template  -->
-  <script id="gallery-template" type="text/x-handlebars-template">
-    {{#each data}}
-    <div class="col-md-3">
-      <img src="{{thumbpath}}" alt="{{thumbpath}}" class="img-thumbnail mb-3">
-    </div>
-    {{/each}}
-  </script>
+  
   <script>
     checkLogin();
     loadData('gallery-categories', 'gallery-categories-template', 'gallery-categories')

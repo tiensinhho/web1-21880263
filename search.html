@@ -144,25 +144,7 @@
   <!-- HandlebarsJS  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
   <script src="js/21880263.js"></script>
-
-  <script id="search-template" type="text/x-handlebars-template">
-    {{#each data}}
-    <div class="py-3">
-        <a href="#" onclick="loadData('{{type}}/{{id}}', 'details-template', 'content')" class="text-decoration-none"><h1 class="text-black">{{name}}</h1></a>
-        <div class="text-black-50">{{{summary}}}</div>
-    </div>
-    {{/each}}
-  </script>
-
-  <script id="details-template" type="text/x-handlebars-template">
-    {{#each data}}
-    <h1>{{name}}</h1>
-    {{#if imagepath}}
-    <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3">
-    {{/if}}
-    <div class="text-black-50">{{{description}}}</div>
-    {{/each}}
-  </script>
+  
   <script>
     checkLogin();
 
