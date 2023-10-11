@@ -216,11 +216,16 @@
 
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my"></script>
-  <script>
+  <head>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my"></script>
+    ...
+    </head>
+    
+    <script>
     function onsubmit(e) {
       e.preventDefault();
       grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'})
+        const token = await grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'})
         .then(async function(token) {
           let response = await fetch('verify.php',{
             method: 'POST',
@@ -229,8 +234,7 @@
               'Accept': 'application/json'
             },
             body: JSON.stringify({'g-token': token})
-          });
-
+        })
           if (response.status == 200){
             sendMail();
           } else {
@@ -238,9 +242,9 @@
             reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
             reponseMessage.className = 'text-danger'
           }
-        });
-      });
-    };
+      })
+    }
+    </script>
 
     async function sendMail(){
       let reponseMessage = document.getElementById('reponseMessage');
