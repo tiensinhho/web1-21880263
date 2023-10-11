@@ -101,7 +101,7 @@
           <h1>Misscellaneous information:</h1>
           <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad libero ipsam laboriosam nihil consequatur vitae impedit, incidunt similique officiis, eligendi ratione animi commodi beatae recusandae soluta corporis illum, porro quibusdam.</p>
           <p class="text-black-50"><i>Send an email. All fileds with an * are required</i></p>
-          <form action="#" method="post" class=" text-black-50" onsubmit="recaptcha(event)">
+          <form action="#" method="post" class=" text-black-50" onsubmit="onsubmit(event)">
             <div class="row">
               <div class="col">
                 <div class="mb-3">
@@ -217,27 +217,26 @@
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my"></script>
   <script>
-    function recaptcha(e) {
+    function onsubmit(e) {
       e.preventDefault();
-      grecaptcha.enterprise.ready(function() {
-        grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'}).then(async function(token) {
-          let response = await fetch('verify.php',{
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({'g-token': token})
-          });
-          console.log(response);
-          if (response.status == 200){
-            sendMail();
-          } else {
-            let reponseMessage = document.getElementById('reponseMessage');
-            reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
-            reponseMessage.className = 'text-danger'
-          }
+      grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'}).then(async function(token) {
+        let response = await fetch('verify.php',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({'g-token': token})
         });
+        
+        if (response.status == 200){
+          sendMail();
+        } else {
+          let reponseMessage = document.getElementById('reponseMessage');
+          reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
+          reponseMessage.className = 'text-danger'
+        }
       });
     }
 
