@@ -240,7 +240,7 @@
           } else {
             let reponseMessage = document.getElementById('reponseMessage');
             reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
-            reponseMessage.className = 'text-danger'
+            reponseMessage.className = 'text-black'
           }
         });
       });
@@ -278,7 +278,7 @@
       } catch (error) {
         reponseMessage.innerHTML = error
         reponseMessage.classList.remove();
-        reponseMessage.className = 'text-black';
+        reponseMessage.className = 'text-danger';
   
       }
     }
