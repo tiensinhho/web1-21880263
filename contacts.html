@@ -101,7 +101,7 @@
           <h1>Misscellaneous information:</h1>
           <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad libero ipsam laboriosam nihil consequatur vitae impedit, incidunt similique officiis, eligendi ratione animi commodi beatae recusandae soluta corporis illum, porro quibusdam.</p>
           <p class="text-black-50"><i>Send an email. All fileds with an * are required</i></p>
-          <form action="#" method="post" class=" text-black-50" onsubmit="onsubmit(event)">
+          <form action="#" method="post" class=" text-black-50" onsubmit="onSubmit(event)">
             <div class="row">
               <div class="col">
                 <div class="mb-3">
@@ -217,7 +217,7 @@
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LehZ5IoAAAAAAZT1f8u80KzxWZGDmq-HXz_7lvS"></script>
   <script>
-    function onsubmit(e) {
+    function onSubmit(e) {
       e.preventDefault();
       grecaptcha.enterprise.ready(function() {
         grecaptcha.enterprise.execute('6LehZ5IoAAAAAAZT1f8u80KzxWZGDmq-HXz_7lvS', {action: 'submit'}).then(async function(token) {
