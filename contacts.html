@@ -228,7 +228,7 @@
       grecaptcha.enterprise.ready(function() {
         grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'}).then(async function(token) {
           let response = await fetch('verify.php',{
-            method: 'post',
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json'
@@ -259,7 +259,7 @@
           copy: document.getElementById('copy').value
         }
         let response = await fetch(`${AUTHENDICATE_API}/send`, {
-          method: 'post',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
