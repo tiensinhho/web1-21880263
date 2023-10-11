@@ -240,7 +240,7 @@
           } else {
             let reponseMessage = document.getElementById('reponseMessage');
             reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
-            reponseMessage.classList.toggle('text-danger')
+            reponseMessage.className = 'text-danger'
           }
         });
       });
@@ -271,14 +271,14 @@
         if(response.status == 200) {
           reponseMessage.innerHTML = result.message;
           reponseMessage.classList.remove();
-          reponseMessage.classList.toggle('text-success');
+          reponseMessage.className = 'text-primary';
         } else {
           throw new Error(result.message)
         }
       } catch (error) {
         reponseMessage.innerHTML = error
         reponseMessage.classList.remove();
-        reponseMessage.classList.toggle('text-danger');
+        reponseMessage.className = 'text-danger';
   
       }
     }
