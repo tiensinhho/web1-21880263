@@ -234,7 +234,7 @@
               'Accept': 'application/json'
             },
             body: JSON.stringify({'g-token': token})
-        })
+          });
           if (response.status == 200){
             sendMail();
           } else {
@@ -242,7 +242,8 @@
             reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
             reponseMessage.className = 'text-danger'
           }
-      })
+        });  
+      });
     }
     </script>
 
