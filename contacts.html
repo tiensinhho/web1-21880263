@@ -132,8 +132,6 @@
             </div>
             <div class="row">
               <div class="col">
-                <div class="g-recaptcha" data-sitekey="6Le2-5EoAAAAAKaDgXV1WYdsJkUeIMteTQrzaCeq" data-action="LOGIN"></div>
-                <br/>
                 <div id="reponseMessage" class="text-info text-canter"></div>
               </div>
               <div class="col">
@@ -217,19 +215,12 @@
   <script src="js/map.js"></script>
 
   <!-- Google recaptcha -->
-  <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my"></script>
-  <head>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my"></script>
-    ...
-    </head>
-    
-    <script>
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LehZ5IoAAAAAAZT1f8u80KzxWZGDmq-HXz_7lvS"></script>
+  <script>
     function onsubmit(e) {
       e.preventDefault();
-      grecaptcha.enterprise.ready(async () => {
-        const token = await grecaptcha.enterprise.execute('6LcE6I8oAAAAAOQZGnv-DoeT9Aq-eR9Bco343_my', {action: 'submit'})
-        .then(async function(token) {
+      grecaptcha.enterprise.ready(function() {
+        grecaptcha.enterprise.execute('6LehZ5IoAAAAAAZT1f8u80KzxWZGDmq-HXz_7lvS', {action: 'submit'}).then(async function(token) {
           let response = await fetch('verify.php',{
             method: 'POST',
             headers: {
@@ -238,17 +229,17 @@
             },
             body: JSON.stringify({'g-token': token})
           });
+          console.log(response);
           if (response.status == 200){
             sendMail();
           } else {
             let reponseMessage = document.getElementById('reponseMessage');
             reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
-            reponseMessage.className = 'text-danger'
+            reponseMessage.className = 'text-black'
           }
-        });  
+        });
       });
     }
-    </script>
 
     async function sendMail(){
       let reponseMessage = document.getElementById('reponseMessage');
@@ -263,7 +254,7 @@
           copy: document.getElementById('copy').value
         }
         let response = await fetch(`${AUTHENDICATE_API}/send`, {
-          method: 'POST',
+          method: 'post',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
