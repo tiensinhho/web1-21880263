@@ -130,16 +130,22 @@
               <label for="message" class="form-label">Message*</label>
               <textarea class="form-control" name="message" id="message" rows="3" required></textarea>
             </div>
-            <div class="text-end">
-              <div class="form-check">
-                <label class="form-check-label" for="copy">
-                  Send copy to yourself
-                </label>
-                <input type="checkbox" value="1" id="copy"> &nbsp; &nbsp;
-                <button type="submit" class="btn btn-primary">Send Email to Us</button>
+            <div class="row">
+              <div class="col">
+                <div id="reponseMessage" class="text-info text-canter"></div>
+              </div>
+              <div class="col">
+                <div class="text-end">
+                  <div class="form-check">
+                    <label class="form-check-label" for="copy">
+                      Send copy to yourself
+                    </label>
+                    <input type="checkbox" value="1" id="copy"> &nbsp; &nbsp;
+                    <button type="submit" class="btn btn-primary">Send Email to Us</button>
+                  </div>
+                </div>
               </div>
             </div>
-            <div id="reponseMessage" class="text-danger text-canter"></div>
           </form>
         </div>
     </section>
@@ -232,7 +238,9 @@
           if (response.status == 200){
             sendMail();
           } else {
-            document.getElementById('reponseMessage').innerHTML = 'Error: Can not verify reCAPTCHA'
+            let reponseMessage = document.getElementById('reponseMessage');
+            reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
+            reponseMessage.classList.toggle('text-danger')
           }
         });
         // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
@@ -243,7 +251,10 @@
     }
 
     function sendMail(){
-      document.getElementById('responseMessage').innerHTML= 'OK'
+      let reponseMessage = document.getElementById('reponseMessage');
+      reponseMessage.innerHTML = "OK"
+      reponseMessage.classList.remove();
+      reponseMessage.classList.toggle('text-success');
     }
     </script>
 
