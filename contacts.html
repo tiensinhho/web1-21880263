@@ -55,8 +55,9 @@
               <a class="nav-link active" href="contacts.html">Contacts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
-            </li>
+              <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+              <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
+                </li>
           </ul>
           <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
             <input class="form-control ms-3 border-0" type="text" placeholder="Search">
@@ -169,7 +170,8 @@
           <a class="nav-link active" href="contacts.html">Contacts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+          <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+          <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
         </li>
     </ul>
     <p class=" text-white-50">Copyright &copy; 2023 by Ho Tien Sinh - 21880263</p>
@@ -184,7 +186,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="#" method="post" id="formlogin"">
+          <form action="#" method="post" id="formlogin" onsubmit="lognin(event)">
             <h3 class=" text-center">Login Form</h3>
             <div class=" mb-3">
               <input type="text" name="username" id="username" placeholder="Username" class=" form-control">
@@ -196,6 +198,7 @@
           </form>
         </div>
         <div class="modal-footer">
+          <div class="text-danger" id="errorMessage"></div>
         </div>
       </div>
     </div>
@@ -217,6 +220,8 @@
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7"></script>
   <script>
+    checkLogin();
+
     function onSubmit(e) {
       e.preventDefault();
       grecaptcha.enterprise.ready(function() {
@@ -277,6 +282,6 @@
   
       }
     }
-    </script>
+  </script>
 
 </html>

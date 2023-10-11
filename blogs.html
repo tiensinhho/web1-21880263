@@ -55,8 +55,9 @@
               <a class="nav-link" href="contacts.html">Contacts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
-            </li>
+              <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+              <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
+                </li>
           </ul>
           <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
             <input class="form-control ms-3 border-0" type="text" placeholder="Search">
@@ -99,7 +100,8 @@
           <a class="nav-link" href="contacts.html">Contacts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+          <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+          <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
         </li>
     </ul>
     <p class=" text-white-50">Copyright &copy; 2023 by Ho Tien Sinh - 21880263</p>
@@ -114,7 +116,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="#" method="post" id="formlogin">
+          <form action="#" method="post" id="formlogin" onsubmit="lognin(event)">
             <h3 class=" text-center">Login Form</h3>
             <div class=" mb-3">
               <input type="text" name="username" id="username" placeholder="Username" class=" form-control">
@@ -126,6 +128,7 @@
           </form>
         </div>
         <div class="modal-footer">
+          <div class="text-danger" id="errorMessage"></div>
         </div>
       </div>
     </div>
@@ -152,10 +155,10 @@
     {{#each data}}
     <div class="clearfix py-3">
       <h3>{{name}}</h3>
-      <p>by {{author}} in <a href="#" onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="#comments" onclick="loadBlogsDetails({{id}}, true)">Comments ({{comments.length}})</a></p>
+      <p>by {{author}} in <a href="#" onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="#comments" onclick="loadBlogsDetails('{{id}}', true)">Comments ({{comments.length}})</a></p>
       <img src="{{thumbpath}}" alt="{{name}}" class=" float-start me-3 border rounded-4">
       <p class=" text-black-50">{{summary}}</p>
-      <a href="#" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails({{id}})">Read more</a>
+      <a href="#" class="btn btn-link readmore ps-0" onclick="loadBlogsDetails('{{id}}')">Read more</a>
     </div>
     {{/each}}
     {{#pagination currentPage pageCount}}
@@ -256,6 +259,7 @@
 
   <!-- Handlebars Helper  -->
   <script>
+    checkLogin();
     Handlebars.registerHelper('formatDate', function(date){
       let formatDate = new Date(date);
       let options = {
