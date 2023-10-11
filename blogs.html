@@ -220,7 +220,7 @@
           throw new error(result.message);
         }
       } catch (error){
-        responseMessage.innerHTML = result.message;
+        responseMessage.innerHTML = error;
         responseMessage.className = 'text-danger';
       }
     }
