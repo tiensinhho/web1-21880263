@@ -227,8 +227,9 @@
               'Content-Type': 'application/json',
               'Accept': 'application/json'
             },
-            body :JSON.stringify({'g-token': token})
+            body: JSON.stringify({'g-token': token})
           });
+          console.log(response);
           if (response.status == 200){
             sendMail();
           } else {
