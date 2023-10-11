@@ -56,11 +56,11 @@
             </li>
             <li class="nav-item">
               <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
-              <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
+              <a class="nav-link linkLogout" href="#" onclick="logout()" style="display: none;">Logout</a>
                 </li>
           </ul>
-          <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
-            <input class="form-control ms-3 border-0" type="text" placeholder="Search">
+          <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="get" action="search.html">
+            <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword">
             <button class="btn my-2 my-sm-0 border-0" type="submit">
               <i class="fa fa-search" aria-hidden="true"></i>
             </button>
@@ -133,7 +133,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <div id="reponseMessage" class="text-info text-canter"></div>
+                <div id="responseMessage" class="text-info text-canter"></div>
               </div>
               <div class="col">
                 <div class="text-end">
@@ -238,16 +238,16 @@
           if (response.status == 200){
             sendMail();
           } else {
-            let reponseMessage = document.getElementById('reponseMessage');
-            reponseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
-            reponseMessage.className = 'text-danger'
+            let responseMessage = document.getElementById('responseMessage');
+            responseMessage.innerHTML = 'Error: Can not verify reCAPTCHA';
+            responseMessage.className = 'text-danger'
           }
         });
       });
     }
 
     async function sendMail(){
-      let reponseMessage = document.getElementById('reponseMessage');
+      let responseMessage = document.getElementById('responseMessage');
 
       try{
         let token = await getAuthenticateToken('test', '1c3cr3@m')
@@ -269,16 +269,16 @@
         });
         let result = await response.json();
         if(response.status == 200) {
-          reponseMessage.innerHTML = result.message;
-          reponseMessage.classList.remove();
-          reponseMessage.className = 'text-primary';
+          responseMessage.innerHTML = result.message;
+          responseMessage.classList.remove();
+          responseMessage.className = 'text-primary';
         } else {
           throw new Error(result.message)
         }
       } catch (error) {
-        reponseMessage.innerHTML = error
-        reponseMessage.classList.remove();
-        reponseMessage.className = 'text-danger';
+        responseMessage.innerHTML = error
+        responseMessage.classList.remove();
+        responseMessage.className = 'text-danger';
   
       }
     }

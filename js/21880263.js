@@ -14,7 +14,7 @@ async function loadData(request, templateId, viewId){
 };
 
 async function getAuthenticateToken(username, password){
-  let reponse = await fetch(`${AUTHENTICATE_API}/authenticate`, {
+  let response = await fetch(`${AUTHENTICATE_API}/authenticate`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,8 +22,8 @@ async function getAuthenticateToken(username, password){
     },
     body: JSON.stringify({username, password})
   });
-  let result = await reponse.json();
-  if (reponse.status == 200) {
+  let result = await response.json();
+  if (response.status == 200) {
     return result.token;
   }
   throw new (result.message)
@@ -63,6 +63,11 @@ function displayControls(isLogin = true){
     linkLogins[i].style.display =displayLogin;
     linkLogouts[i].style.display = displayLogout;
   }
+
+  let leaveComment = document.getElementById('leave-comment');
+  if (leaveComment) {
+    leaveComment.style.display = displayLogout;
+  }
 }
 
 async function checkLogin(){
@@ -73,7 +78,7 @@ async function checkLogin(){
 async function verifyToken(){
   let token = localStorage.getItem('token');
   if (token) {
-    let reponse = await fetch(`${AUTHENTICATE_API}/verify`,{
+    let response = await fetch(`${AUTHENTICATE_API}/verify`,{
       method: 'POST',
       headers : {
         'Content-Type': 'application/json',
@@ -81,7 +86,7 @@ async function verifyToken(){
         'Authorization': 'Bearer' + token
       }
     });
-    if (reponse.status == 200){
+    if (response.status == 200){
       return true;
     }
   }
