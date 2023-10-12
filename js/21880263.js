@@ -47,7 +47,7 @@ async function login(e){
   try{
     let token = await getAuthenticateToken(username, password);
     if (token){
-      localStorage.setItem('token', token);
+      window.localStorage.setItem('token', token);
       document.getElementsByClassName('btn-close')[0].click();
       displayControls();
       window.localStorage.setItem("isLogin","true")
