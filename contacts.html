@@ -262,7 +262,7 @@
           message: document.getElementById('message'),
           copy: document.getElementById('copy').value
         }
-        let response = await fetch(`${AUTHENDICATE_API}/send`, {
+        let response = await fetch(`${AUTHENTICATE_API}/send`, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
