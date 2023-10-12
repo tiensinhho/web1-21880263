@@ -228,11 +228,11 @@
   <script>
     checkLogin();
 
-    /*function onSubmit(e){
+    function onSubmit(e){
       document.getElementById("formSendEmail").submit();
-    }*/
+    }
 
-    function onSubmit(e) {
+    /*function onSubmit(e) {
       e.preventDefault();
 
        grecaptcha.enterprise.ready(function() {
@@ -255,7 +255,7 @@
           }
         });
       });
-    }
+    }*/
 
     async function sendMail(){
       let responseMessage = document.getElementById('responseMessage');
