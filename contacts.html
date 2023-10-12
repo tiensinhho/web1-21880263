@@ -236,7 +236,8 @@
           let response = await fetch('verify_human.php',{
             method: 'POST',
             headers: {
-              'Content-Type': 'application/x-www-form-urlendcoded'
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
             },
             body: JSON.stringify({'g-token': token})
           });
