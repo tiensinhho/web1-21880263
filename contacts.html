@@ -102,7 +102,7 @@
           <h1>Misscellaneous information:</h1>
           <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad libero ipsam laboriosam nihil consequatur vitae impedit, incidunt similique officiis, eligendi ratione animi commodi beatae recusandae soluta corporis illum, porro quibusdam.</p>
           <p class="text-black-50"><i>Send an email. All fileds with an * are required</i></p>
-          <form action="#" method="post" class=" text-black-50" onsubmit="onSubmit(event)">
+          <form action="verify_human.php" method="post" class=" text-black-50" onsubmit="onSubmit(event)" id="formSendEmail">
             <div class="row">
               <div class="col">
                 <div class="mb-3">
@@ -142,7 +142,8 @@
                       Send copy to yourself
                     </label>
                     <input type="checkbox" value="1" id="copy"> &nbsp; &nbsp;
-                    <button type="submit" class="btn btn-primary">Send Email to Us</button>
+                    <button type="submit" class="btn btn-primary g-recaptcha"
+                      data-sitekey="6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7" data-callback="onSubmit">Send Email to Us</button>
                   </div>
                 </div>
               </div>
@@ -222,11 +223,16 @@
   <script>
     checkLogin();
 
+    /*function onSubmit(e){
+      document.getElementById("formSendEmail").submit();
+    }*/
+
     function onSubmit(e) {
       e.preventDefault();
-      grecaptcha.enterprise.ready(function() {
+
+       grecaptcha.enterprise.ready(function() {
         grecaptcha.enterprise.execute('6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7', {action: 'submit'}).then(async function(token) {
-          let response = await fetch('verify.php',{
+          let response = await fetch('verify_human.php',{
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
