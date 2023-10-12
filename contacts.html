@@ -102,7 +102,7 @@
           <h1>Misscellaneous information:</h1>
           <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad libero ipsam laboriosam nihil consequatur vitae impedit, incidunt similique officiis, eligendi ratione animi commodi beatae recusandae soluta corporis illum, porro quibusdam.</p>
           <p class="text-black-50"><i>Send an email. All fileds with an * are required</i></p>
-          <form action="#" method="post" class=" text-black-50" id="formSendEmail">
+          <form action="#" method="post" class=" text-black-50" onsubmit="onSubmit(event)" id="formSendEmail">
             <div class="row">
               <div class="col">
                 <div class="mb-3">
@@ -142,10 +142,7 @@
                       Send copy to yourself
                     </label>
                     <input type="checkbox" value="1" id="copy"> &nbsp; &nbsp;
-                    <button type="submit" class="btn btn-primary g-recaptcha" 
-                    data-sitekey="6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7" 
-                    data-callback='onSubmit' 
-                    data-action='submit'
+                    <button type="submit" class="btn btn-primary"
                     >Send Email to Us</button>
                   </div>
                 </div>
@@ -223,15 +220,10 @@
 
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7"></script>
-  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script src="js/onSubmit.js"></script>
 
   <script>
     checkLogin();
-
-    function onSubmit(token){
-      let responseMessage = document.getElementById('responseMessage');
-      responseMessage.innerHTML = document.getElementById("formSendEmail").submit();
-    }
 
     /*function onSubmit(e) {
       e.preventDefault();
