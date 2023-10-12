@@ -255,7 +255,7 @@
 
       try{
         
-        let token = await getAuthenticateToken('web1', 'W3b1@Project')
+        let token = await getAuthenticateToken('test', '1c3cr3@m')
         let postData ={
           name :document.getElementById('name'),
           email: document.getElementById('email'),
@@ -264,11 +264,11 @@
           copy: document.getElementById('copy').value
         }
         let response = await fetch(`${AUTHENTICATE_API}/send`, {
-          method: 'post',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': 'Bearer' + token
+            "Authorization": 'Bearer ' + token
           },
           body: JSON.stringify(postData)
         });
