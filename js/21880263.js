@@ -1,5 +1,10 @@
-const API = 'https://web1-api.vercel.app/api'
-const AUTHENTICATE_API = 'https://web1-api.vercel.app/users'
+const API = 'https://web1-api.vercel.app/api';
+const AUTHENTICATE_API = 'https://web1-api.vercel.app/users';
+const CAPTCHA_SITE_KEY = '6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7';
+const CAPTCHA_PROJECT_ID = 'web1-21880263-1697009989589';
+const CAPTCHA_API_KEY = 'AIzaSyC95MuNOKbKIpDZ-d6C9L-OZjwv64OVJdM';
+
+
 //Load Data
 async function loadData(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);
