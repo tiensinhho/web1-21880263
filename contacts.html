@@ -228,8 +228,9 @@
   <script>
     checkLogin();
 
-    function onSubmit(e){
-      document.getElementById("formSendEmail").submit();
+    function onSubmit(token){
+      let responseMessage = document.getElementById('responseMessage');
+      responseMessage.innerHTML = document.getElementById("formSendEmail").submit();
     }
 
     /*function onSubmit(e) {
