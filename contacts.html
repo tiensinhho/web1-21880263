@@ -142,7 +142,10 @@
                       Send copy to yourself
                     </label>
                     <input type="checkbox" value="1" id="copy"> &nbsp; &nbsp;
-                    <button type="submit" class="btn btn-primary g-recaptcha"
+                    <button type="submit" class="btn btn-primary g-recaptcha" 
+                    data-sitekey="6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7" 
+                    data-callback='onSubmit' 
+                    data-action='submit'
                     >Send Email to Us</button>
                   </div>
                 </div>
@@ -220,6 +223,7 @@
 
   <!-- Google recaptcha -->
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 
   <script>
     checkLogin();
@@ -239,7 +243,7 @@
               'Content-Type': 'application/json',
               'Accept': 'application/json'
             },
-            body: JSON.stringify({'g-token': token})
+            body: JSON.stringify({'g-recaptcha-response': token})
           });
           
           if (response.status == 200){
