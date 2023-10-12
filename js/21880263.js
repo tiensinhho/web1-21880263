@@ -1,6 +1,6 @@
 const API = 'https://web1-api.vercel.app/api'
 const AUTHENTICATE_API = 'https://web1-api.vercel.app/users'
-
+//Load Data
 async function loadData(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);
     const data = await response.json();
@@ -15,7 +15,7 @@ async function loadData(request, templateId, viewId){
     view.innerHTML = template(context);
 
 };
-
+//Login
 async function getAuthenticateToken(username, password){
   let response = await fetch(`${AUTHENTICATE_API}/authenticate`, {
     method: 'POST',
@@ -45,6 +45,7 @@ async function login(e){
       localStorage.setItem('token', token);
       document.getElementsByClassName('btn-close')[0].click();
       displayControls();
+      window.localStorage.setItem("isLogin","true")
     } 
   }catch (error){
     document.getElementById('errorMessage').innerHTML = error;
@@ -74,7 +75,9 @@ function displayControls(isLogin = true) {
 }
 
 async function checkLogin() {
-  let isLogin = await verifyToken();
+  let isLogin = window.localStorage.getItem("isLogin");
+  // console.log(isLogin);
+  // isLogin = await verifyToken();
   displayControls(isLogin);
 }
 
@@ -98,5 +101,7 @@ async function verifyToken() {
 
 function logout() {
   localStorage.clear();
+  window.localStorage.removeItem("isLogin")
   displayControls(false);
 }
+
