@@ -109,13 +109,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="#" method="post" id="formlogin" onsubmit="lognin(event)">
+          <form action="#" method="post" id="formlogin" onsubmit="login(event)">
             <h3 class=" text-center">Login Form</h3>
             <div class=" mb-3">
-              <input type="text" name="username" id="username" placeholder="Username" class=" form-control">
+              <input type="text" name="username" id="username" placeholder="Username" class=" form-control" required>
             </div>
             <div class="mb-3">
-              <input type="password" name="password" id="password" placeholder="Password" class=" form-control">
+              <input type="password" name="password" id="password" placeholder="Password" class=" form-control" required>
             </div>
             <button type="submit" class=" form-control">Login</button>
           </form>

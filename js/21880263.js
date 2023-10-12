@@ -29,7 +29,7 @@ async function getAuthenticateToken(username, password){
   if (response.status == 200) {
     return result.token;
   }
-  throw new (result.message)
+  throw new Error(result.message);
 }
 
 async function login(e){
@@ -47,14 +47,14 @@ async function login(e){
       displayControls();
     } 
   }catch (error){
-    document.getElementById('errorMessage').innerHTML=error;
+    document.getElementById('errorMessage').innerHTML = error;
     displayControls(false);
   }
 }
 
-function displayControls(isLogin = true){
+function displayControls(isLogin = true) {
   let linkLogins = document.getElementsByClassName('linkLogin');
-  let linkLogouts = document.getElementsByClassName('linkLogout')
+  let linkLogouts = document.getElementsByClassName('linkLogout');
   
   let displayLogin = 'none';
   let displayLogout = 'block'
@@ -73,12 +73,12 @@ function displayControls(isLogin = true){
   }
 }
 
-async function checkLogin(){
+async function checkLogin() {
   let isLogin = await verifyToken();
   displayControls(isLogin);
 }
 
-async function verifyToken(){
+async function verifyToken() {
   let token = localStorage.getItem('token');
   if (token) {
     let response = await fetch(`${AUTHENTICATE_API}/verify`,{
