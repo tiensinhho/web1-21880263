@@ -261,7 +261,7 @@
           email: document.getElementById('email').value,
           subject: document.getElementById('subject').value,
           message: document.getElementById('message').value,
-          copy: (document.getElementById('copy').value == 1)
+          copy: document.getElementById('copy').value
         }
         cons
         let response = await fetch(`${AUTHENTICATE_API}/send`, {
