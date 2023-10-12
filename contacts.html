@@ -232,7 +232,7 @@
 
        grecaptcha.enterprise.ready(function() {
         grecaptcha.enterprise.execute('6LeFmZIoAAAAAPWySUGRb67tfrO0Pxq6WSiru_K7', {action: 'submit'}).then(async function(token) {
-          let response = await fetch('verify_human.php',{
+          let response = await fetch('verify.php',{
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -240,7 +240,7 @@
             },
             body: JSON.stringify({'g-token': token})
           });
-
+          console.log(response);
           if (response.status == 200){
             sendMail();
           } else {
