@@ -51,6 +51,9 @@ async function login(e){
       document.getElementsByClassName('btn-close')[0].click();
       displayControls();
       window.localStorage.setItem("isLogin","true")
+      window.localStorage.setItem("username", username)
+      window.localStorage.setItem("password", password)
+
     } 
   }catch (error){
     document.getElementById('errorMessage').innerHTML = error;
