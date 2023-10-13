@@ -50,9 +50,7 @@ async function login(e){
       window.localStorage.setItem('token', token);
       document.getElementsByClassName('btn-close')[0].click();
       displayControls();
-      window.localStorage.setItem("isLogin","true")
-      window.localStorage.setItem("username", username)
-      window.localStorage.setItem("password", password)
+      // window.localStorage.setItem("isLogin","true")
 
     } 
   }catch (error){
@@ -83,21 +81,20 @@ function displayControls(isLogin = true) {
 }
 
 async function checkLogin() {
-  let isLogin = window.localStorage.getItem("isLogin");
-  // console.log(isLogin);
-  // isLogin = await verifyToken();
+  // let isLogin = window.localStorage.getItem("isLogin");
+  let isLogin = await verifyToken();
   displayControls(isLogin);
 }
 
 async function verifyToken() {
-  let token = localStorage.getItem('token');
+  let token = window.localStorage.getItem('token');
   if (token) {
     let response = await fetch(`${AUTHENTICATE_API}/verify`,{
       method: 'POST',
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': 'Bearer' + token
+        "Authorization": 'Bearer ' + token
       }
     });
     if (response.status == 200){
@@ -109,7 +106,7 @@ async function verifyToken() {
 
 function logout() {
   localStorage.clear();
-  window.localStorage.removeItem("isLogin")
+  // window.localStorage.removeItem("isLogin")
   displayControls(false);
 }
 
