@@ -64,7 +64,8 @@ function displayControls(isLogin = true) {
   let linkLogouts = document.getElementsByClassName('linkLogout');
   
   let displayLogin = 'none';
-  let displayLogout = 'block'
+  let displayLogout = 'block';
+
   if (!isLogin){
     displayLogin = 'block';
     displayLogout = 'none';
@@ -109,4 +110,3 @@ function logout() {
   // window.localStorage.removeItem("isLogin")
   displayControls(false);
 }
-
